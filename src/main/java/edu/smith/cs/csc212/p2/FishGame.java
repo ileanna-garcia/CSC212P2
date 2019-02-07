@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 /**
  * This class manages our model of gameplay: missing and found fish, etc.
  * @author jfoley
+ * @param <Snail>
  *
  */
-public class FishGame {
+public class FishGame<Snail> {
 	/**
 	 * This is the world in which the fish are missing. (It's mostly a List!).
 	 */
@@ -59,12 +61,15 @@ public class FishGame {
 		
 		// TODO(lab) Generate some more rocks!
 		// TODO(lab) Make 5 into a constant, so it's easier to find & change.
-		for (int i=0; i<5; i++) {
+		for (int i=0; i<25; i++) {
 			world.insertRockRandomly();
 		}
 		
-		// TODO(lab) Make the snail!
 		
+		
+		// TODO(lab) Make the snail!
+		Snail friend = world.insertFishRandomly(this);
+	
 		// Make the player out of the 0th fish color.
 		player = new Fish(0, world);
 		// Start the player at "home".

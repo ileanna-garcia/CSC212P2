@@ -32,15 +32,22 @@ public class Snail extends WorldObject {
 	 * Is the snail going to the left?
 	 */
 	public boolean movingLeft = false;
-	
+		
 	/**
 	 * Create a new Snail in a part of this world.
 	 * @param world - the world where the snail moves/lives.
 	 */
 	public Snail(World world) {
-		super(world);
+		super(world);	
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Polishing up my Snail draw method...
 	 * This is kind of a mess, but that's graphics for you.
