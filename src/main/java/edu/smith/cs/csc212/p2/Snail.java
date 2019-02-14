@@ -42,12 +42,6 @@ public class Snail extends WorldObject {
 	}
 
 	
-	
-	
-	
-	
-	
-	
 	/**
 	 * Polishing up my Snail draw method...
 	 * This is kind of a mess, but that's graphics for you.

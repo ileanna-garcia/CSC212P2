@@ -149,6 +149,12 @@ public class World {
 		insertRandomly(r);
 		return r;
 	}
+	// Fish food that inserts at random points gotten from inserting rocks at random points
+	public FishFood insertFoodRandomly() {
+		FishFood f = new FishFood(this);
+		insertRandomly(f);
+		return f;
+	}
 	
 	/**
 	 * Insert a new Fish into the world at random of a specific color.
@@ -197,14 +203,31 @@ public class World {
 		List<WorldObject> inSpot = this.find(x, y);
 		
 		for (WorldObject it : inSpot) {
-			// TODO(P2): Don't let us move over rocks as a Fish.
+			//(P2): Don't let us move over rocks as a Fish.
+			if (it instanceof Rock) {
+				return false;
+			}
+			
+			
+			//In theory this should work but something keeps overriding the fish. Logically I'm pretty sure that this is correct.
+			if (it instanceof Fish && isPlayer == false) {
+					return false;
+				
+			}
+			//fish do not touch snail and vise versa 
+			if (it instanceof Fish && it instanceof Snail) {
+				return false;
+			
+		}
+			
+			
 			// The other fish shouldn't step "on" the player, the player should step on the other fish.
 			if (it instanceof Snail) {
 				// This if-statement doesn't let anyone step on the Snail.
 				// The Snail(s) are not gonna take it.
 				return false;
 			}
-		}
+					}
 		
 		// If we didn't see an obstacle, we can move there!
 		return true;
@@ -226,11 +249,19 @@ public class World {
 	 * @param followers a set of objects to follow the leader.
 	 */
 	public static void objectsFollow(WorldObject target, List<? extends WorldObject> followers) {
-		// TODO(P2) Comment this method!
+		// (P2) Comment this method!
 		// What is recentPositions?
+		//This list that allows us to add and remove the fish from the following fishes.
+		//
 		// What is followers?
+		// Followers are the objects that are set to follow the target object.
+		//
 		// What is target?
+		// The target is the object that is the red fish in the bubble looking for the recent positions of the followers.
+		//
 		// Why is past = putWhere[i+1]? Why not putWhere[i]?
+		//putWhere [i+1] would help us avoid an error where the first fish collected becomes the fish in the bubble.
+		
 		List<IntPoint> putWhere = new ArrayList<>(target.recentPositions);
 		for (int i=0; i<followers.size(); i++) {
 			IntPoint past = putWhere.get(i+1);

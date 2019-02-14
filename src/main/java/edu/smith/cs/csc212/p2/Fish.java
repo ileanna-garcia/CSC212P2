@@ -17,7 +17,7 @@ public class Fish extends WorldObject {
 	 */
 	public static Color[] COLORS = {
 			Color.red,
-			Color.green,
+			Color.darkGray,
 			Color.yellow,
 			Color.black,
 			Color.cyan,
@@ -25,8 +25,9 @@ public class Fish extends WorldObject {
 			Color.magenta,
 			Color.blue
 			
-			// TODO: (lab) Add more colors.
-			// TODO: (P2) Maybe make a special fish that is more points?
+			
+			// (lab) Add more colors.
+			//(P2) Maybe make a special fish that is more points?
 	};
 	/**
 	 * This is an index into the {@link #COLORS} array.
@@ -36,6 +37,7 @@ public class Fish extends WorldObject {
 	 * Whether or not this is the player;
 	 */
 	boolean player = false;
+	
 	
 	/**
 	 * Called only on the Fish that is the player!
@@ -54,6 +56,9 @@ public class Fish extends WorldObject {
 		super(world);
 		this.color = color;
 	}
+	
+	
+	
 	
 	/**
 	 * What actual color is this fish? We store an index, so get it here.
@@ -115,4 +120,7 @@ public class Fish extends WorldObject {
 	public void step() {
 		// Fish are controlled at a higher level; see FishGame.
 	}
+
+
+	
 }
